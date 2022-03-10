@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    </table>
+    <script>
+        let tbl = document.createElement('table');
+        document.body.prepend(tbl);
+        let tr = document.createElement('tr');
+        tbl.append(tr);
+        for (let i = 1; i <= 5; i++) {
+            let td = document.createElement('td');
+            td.innerHTML = ` col${i}`;
+            tr.append(td);
+        }
+        let td = document.createElement('td');
+        td.innerHTML = `res`;
+        tr.append(td);
+
+        function table(columns, rows) {
+            let tbl = document.createElement('table');
+            document.body.append(tbl);
+            for (let j = 1; j <= rows; j++) {
+                let tr = document.createElement('tr');
+                tbl.append(tr);
+                for (let i = 1; i <= columns; i++) {
+                    let td = document.createElement('td');
+                    td.innerHTML = ` ${j}-${i} `;
+                    tr.append(td);
+                }
+                let td = document.createElement('td');
+                    td.innerHTML = ` 1 `;
+                    tr.append(td);
+            }
+        }
+        table(5, 5);
+    </script>
+</body>
+
+</html>

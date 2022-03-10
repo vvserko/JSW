@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <form action="http://192.168.0.200:3000/form" method="post">
+        <label for="login">Login</label>
+        <input type="text" name="login" id="login">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <label for="remember">Save</label>
+        <select name="gender" id="gender">
+            <option value="1">Male</option>;
+            <option value="0">Female</option>;
+        </select>
+        <input type="checkbox" name="remember" id="remember">
+        <input type="submit" value="Login">
+    </form>
+
+    <ul>
+
+    </ul>
+
+    <script>
+        //отменить отправку, доб обработчик и 
+        const forma = document.forms[0];
+        const errors = [];
+
+        function showErrors() {
+            const ul = document.body.querySelector('ul');
+            ul.innerHTML = '';
+            errors.forEach(error => {
+                let li = document.createElement('li');
+                ul.append(li);
+                li.textContent = error;
+            })
+            errors.length = 0;
+        };
+        forma.addEventListener('input', event =>{
+            if(forma.elements.login.value.length > 5){
+                forma.login.style.background = 'green';
+            } else{
+                forma.login.style.background = 'red';
+            }
+        })
+        forma.addEventListener('submit', (event) => {
+            event.preventDefault();
+            
+            if (forma.elements.login.value.length <= 5 || forma.elements.gender.selectedIndex != 1 || forma.elements.remember.checked) {
+                errors.push("длина логина должна быть больше 5 символов");
+                forma.login.style.background = 'red';
+            }
+            const login = forma.elements.login.value;
+            const password = forma.elements.password.value;
+            const gender = forma.elements.gender.selectedIndex;
+            console.log(login, gender);
+            showErrors();
+            
+        });
+    </script>
+
+</body>
+
+
+</html>
