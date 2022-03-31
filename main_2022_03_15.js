@@ -12,6 +12,7 @@ lastNameInput.addEventListener('input', function(){
     }
 })*/
 const state = document.body.querySelector('select');
+const check = document.body.querySelector()
 form.addEventListener('submit', event => {    
     if(state.selectedIndex > 0){        
         state.classList.remove('is-invalid');
@@ -25,6 +26,7 @@ form.addEventListener('submit', event => {
         state.nextElementSibling.className = 'invalid-feedback';  
         event.preventDefault();       
     }
+    
 })
 
     
